@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 10px;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            position: relative; /* Allows absolute positioning for the line */
+        }
+        #statusArea {
+            margin: 20px;
+            font-size: 20px;
+        }
+        .line-horizontal-top,
+        .line-horizontal-center,
+        .line-horizontal-bottom,
+        .line-vertical-left,
+        .line-vertical-center,
+        .line-vertical-right,
+        .line-diagonal-right,
+        .line-diagonal-left {
+            position: absolute;
+            width: 300px; /* Length of the line to cover three cells */
+            height: 10px; /* Thickness of the line */
+            background: red; /* Color of the line */
+            z-index: 1;
+        }
+        /* Adjust the position of each line based on the winning combination */
+        .line-horizontal-top { top: 50px; left: 10px; }
+        .line-horizontal-center { top: 160px; left: 10px; }
+        .line-horizontal-bottom { top: 270px; left: 10px; }
+        .line-vertical-left { top: 10px; left: 50px; height: 300px; width: 10px; }
+        .line-vertical-center { top: 10px; left: 160px; height: 300px; width: 10px; }
+        .line-vertical-right { top: 10px; left: 270px; height: 300px; width: 10px; }
+        .line-diagonal-right { top: 10px; left: 10px; width: 420px; transform: rotate(45deg); }
+        .line-diagonal-left { top: 10px; left: 10px; width: 420px; transform: rotate(-45deg); }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div id="statusArea">Player X's turn</div>
+        <div class="grid">
+            <div class="cell" data-cell="0"></div>
+            <div class="cell" data-cell="1"></div>
+            <div class="cell" data-cell="2"></div>
+            <div class="cell" data-cell="3"></div>
+            <div class="cell" data-cell="4"></div>
+            <div class="cell" data-cell="5"></div>
+            <div class="cell" data-cell="6"></div>
+            <div class="cell" data-cell="7"></div>
+            <div class="cell" data-cell="8"></div>
+        </div>
+        <div id="line" class=""></div>
+        <button id="reset">Reset Game</button>
+        <button id="showSuggestions">Show Suggestions</button>  <!-- Added Show Suggestions button -->
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
